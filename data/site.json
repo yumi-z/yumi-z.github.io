@@ -1,4 +1,34 @@
 {
-  "docs": {},
+  "docs": {
+    "skills": {
+      "items": [
+        {
+          "g": "Languages",
+          "l": [
+            "Python",
+            "Java",
+            "SQL"
+          ]
+        },
+        {
+          "g": "Tools",
+          "l": [
+            "Git",
+            "Linux",
+            "React",
+            "Figma"
+          ]
+        },
+        {
+          "g": "Focus",
+          "l": [
+            "Data Analysis",
+            "Design",
+            "Writing"
+          ]
+        }
+      ]
+    }
+  },
   "portfolio": []
 }
