@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yumi Zhao</title>
+<!-- Hides the site from search engines until you are ready. Delete this line to go fully public. -->
+<meta name="robots" content="noindex">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f7f7f5;--card:#fff;--ink:#1c1c1a;--mute:#6b6b66;--line:#e4e4df;--acc:#3b5bdb;--accbg:#e8edff;--danger:#c92a2a;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141415;--card:#1d1d1f;--ink:#ececea;--mute:#9a9a94;--line:#2e2e30;--acc:#8ea2ff;--accbg:#262b45;--danger:#ff8787;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141415;--card:#1d1d1f;--ink:#ececea;--mute:#9a9a94;--line:#2e2e30;--acc:#8ea2ff;--accbg:#262b45;--danger:#ff8787;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Noto Sans SC",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{max-width:980px;margin:auto;padding:14px 20px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:700;font-size:20px;letter-spacing:-.01em}
+nav{max-width:980px;margin:auto;padding:8px 20px 0;display:flex;gap:4px;overflow-x:auto}
+nav button{border:0;background:none;color:var(--mute);font:inherit;font-size:15px;padding:10px 14px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+nav button:hover{color:var(--ink)}
+nav button.on{color:var(--acc);border-bottom-color:var(--acc);font-weight:600}
+main{max-width:980px;margin:auto;padding:28px 20px 60px}
+.mono,h1,h2,.brand,.path,nav button,.tag,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"SF Mono",monospace}
+h1{font-size:30px;margin:0 0 6px;letter-spacing:-.03em}h2{font-size:16px;margin:32px 0 12px;font-weight:600;color:var(--mute)}
+.path{color:var(--acc);font-size:13px;margin-bottom:6px}
+.cur::after{content:"▌";color:var(--acc);margin-left:2px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.cur::after{animation:none}}
+nav .k{opacity:.45;font-size:11px;margin-right:6px}
+kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 6px;font-size:12px;color:var(--mute)}
+footer{max-width:980px;margin:auto;padding:20px;border-top:1px solid var(--line);color:var(--mute);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+#pal{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:flex-start;justify-content:center;padding-top:15vh;z-index:20}
+#pal.on{display:flex}#pal .box{width:min(440px,92vw)}
+#pal .opt{padding:9px 12px;border-radius:8px;cursor:pointer;display:flex;justify-content:space-between}
+#pal .opt.sel,#pal .opt:hover{background:var(--accbg);color:var(--acc)}
+.skillrow{display:flex;gap:12px;align-items:baseline;margin-bottom:8px;flex-wrap:wrap}.hero{display:flex;gap:20px;align-items:flex-start;justify-content:space-between}.hero>div:first-child{flex:1;min-width:0}
+.photowrap{text-align:center;flex-shrink:0}.photo{width:112px;height:112px;border-radius:18px;border:1px solid var(--line);background:var(--card);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:40px}.photo img{width:100%;height:100%;object-fit:cover}
+.skillrow b{font-size:13px;color:var(--mute);min-width:96px;font-weight:500}
+.x{cursor:pointer;margin-left:6px;opacity:.55;border:0;background:none;color:inherit;font:inherit;padding:0}.x:hover{opacity:1;color:var(--danger)}
+.mini{width:160px;padding:4px 10px;font-size:13px;display:inline-block}
+.sub{color:var(--mute);margin:0 0 24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.tag{display:inline-block;background:var(--accbg);color:var(--acc);border-radius:99px;padding:2px 10px;font-size:13px;margin:0 6px 6px 0}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:14px;padding:8px 14px;border-radius:9px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--accbg)}.btn.pri:hover{opacity:.88}
+*{-webkit-tap-highlight-color:transparent}button:focus:not(:focus-visible),a:focus:not(:focus-visible){outline:none}.btn.pri{background:var(--acc);border-color:var(--acc);color:var(--bg);font-weight:600}
+.btn.del{color:var(--danger)}
+input,select,textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 12px}
+label{display:block;font-size:13px;color:var(--mute);margin:12px 0 4px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:5px 14px;font:inherit;font-size:14px;cursor:pointer}
+.chip.on{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+.admin{border-style:dashed;margin-bottom:22px}
+.item{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.media{background:var(--accbg);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;font-size:42px;overflow:hidden}
+.media img,.media video{width:100%;height:100%;object-fit:cover}
+.item .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.item h3{margin:0;font-size:17px}.item p{margin:0;color:var(--mute);font-size:14px}
+.meta{font-size:12px;color:var(--mute)}
+.empty{color:var(--mute);text-align:center;padding:40px 0}
+iframe{width:100%;height:70vh;border:1px solid var(--line);border-radius:12px;background:#fff;margin-top:14px}
+.timeline{border-left:2px solid var(--line);padding-left:18px}.timeline>div{margin-bottom:16px}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:.25s}
+#toast.show{opacity:1}
+
+#viewer{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;z-index:40;overflow:auto;padding:calc(56px + env(safe-area-inset-top,0px)) 16px 24px}#viewer.on{display:block}
+#vbody,.pages{display:flex;flex-direction:column;gap:12px}#vbody{max-width:900px;margin:auto}.pages{margin-top:16px}#vbody canvas,.pages canvas{background:#fff;border-radius:8px;border:1px solid var(--line)}
+#vclose{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:16px}
+#dlg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:flex-start;justify-content:center;padding-top:15vh;z-index:30}#dlg.on{display:flex}#dlg .box{width:min(420px,92vw)}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar"><div class="brand" id="brand"></div><div class="row"><button class="btn" id="theme" aria-label="Toggle theme"></button><button class="btn" id="lock"></button></div></div>
+  <nav id="nav"></nav>
+</header>
+<main id="view"></main>
+<footer id="foot"></footer>
+<div id="pal"><div class="card box"><input id="pin" placeholder="Jump to page…"><div id="plist" style="margin-top:8px"></div></div></div>
+<div id="dlg"><div class="card box"><div id="dmsg" style="margin-bottom:10px"></div><input id="din" type="password" autocomplete="off"><label id="drow" style="display:none;margin-top:10px"><input type="checkbox" id="dchk" style="width:auto"> Remember on this device</label><div class="row" style="margin-top:14px;justify-content:flex-end"><button class="btn" id="dno">Cancel</button><button class="btn pri" id="dyes">OK</button></div></div></div>
+<div id="viewer"><button class="btn" id="vclose">✕ Close</button><div id="vbody"></div></div>
+<div id="toast"></div>
+
+<script>
+/* ===== 1. Edit your static content here (or ask Claude to update it) ===== */
+const SITE = {
+  name: "Yumi Zhao",
+  handle: "yumi-z",
+  intro: "Hi, I’m Yumi Zhao. Write a short introduction here: who you are, what you study and what you’re looking for.\n\nA second paragraph can describe your goals, current projects or what drives you.",
+  skills: [["Languages", ["Python", "Java", "C++", "SQL"]], ["Tools", ["Git", "Linux", "React", "Figma"]], ["Focus", ["Data Analysis", "Design", "Writing"]]],
+  updated: "2026-10",
+  email: "you@example.com",
+  links: [["GitHub", "https://github.com/yumi-z"], ["LinkedIn", "https://www.linkedin.com/in/yumi-z-b2175b2a7/"]],
+  courses: [
+    { code: "COURSE 101", name: "Course name", school: "Your University", grade: "A", desc: "One or two lines on what you learned or built." }
+  ],
+  hobbies: [
+    ["🎵", "Music", "What you play or listen to."],
+    ["🏃", "Sports", "Your favorite activities."],
+    ["📷", "Photography", "What you like to shoot."],
+    ["📚", "Reading", "Books you recommend."]
+  ],
+  categories: ["Projects", "Research", "Design", "Video", "Other"]
+};
+const TABS = [["intro","Introduction"],["course","Coursework"],["resume","Resume"],["portfolio","Portfolio"],["hobby","Interests"]];
+
+/* ===== 2. Helpers ===== */
+const $ = s => document.querySelector(s);
+const h = (t, a = {}, ...c) => { const e = document.createElement(t);
+  for (const [k, v] of Object.entries(a)) { if (k === "class") e.className = v; else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v); }
+  for (const x of c.flat()) if (x != null && x !== false) e.append(x.nodeType ? x : document.createTextNode(x)); return e; };
+const toast = m => { const t = $("#toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2800); };
+const sha = async s => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode("ps:" + s)))].map(b => b.toString(16).padStart(2, "0")).join("");
+const fmt = ts => ts ? new Date(ts).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "";
+const safeUrl = u => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : null; } catch { return null; } };
+const kindOf = f => f.type.startsWith("image/") ? "image" : f.type.startsWith("video/") ? "video" : f.type === "application/pdf" ? "pdf" : "file";
+
+const head = (path, title, sub, id) => h("div", {}, path ? h("div", { class: "path" }, path) : null, h("h1", id ? { id } : {}, title), sub != null && h("p", { class: "sub" }, sub));
+let typed = false;
+function typewrite() {
+  const el = $("#tw"); if (!el) return; const t = SITE.name;
+  if (typed || matchMedia("(prefers-reduced-motion:reduce)").matches) { el.textContent = t; return; }
+  typed = true; let i = 0;
+  const id = setInterval(() => { const e = $("#tw"); if (!e) return clearInterval(id); e.textContent = t.slice(0, ++i); if (i >= t.length) clearInterval(id); }, 70);
+}
+
+/* GH-SHIM-START: GitHub-backed storage. Content lives in data/site.json, uploaded files in uploads/ */
+const GH = (() => { const h = location.hostname; if (h.endsWith(".github.io")) { const seg = location.pathname.split("/")[1] || ""; return { owner: h.split(".")[0], repo: seg && !seg.includes(".") ? seg : h }; } return { owner: "yumi-z", repo: "yumi-z.github.io" }; })();
+let TOKEN = null, site = { docs: {}, portfolio: [] }, siteSha = null;
+const subs = [], notify = () => subs.forEach(f => f()), uid = () => Math.random().toString(36).slice(2, 10);
+const b64 = u8 => { let s = ""; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(s); };
+const unb64 = t => new TextDecoder().decode(Uint8Array.from(atob(t.replace(/\s/g, "")), c => c.charCodeAt(0)));
+const gh = (method, path, body) => fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${path.split("/").map(encodeURIComponent).join("/")}`, { method, headers: { Authorization: "Bearer " + TOKEN, Accept: "application/vnd.github+json", ...(body ? { "Content-Type": "application/json" } : {}) }, body: body ? JSON.stringify(body) : undefined });
+const fixSite = () => { site.docs = site.docs || {}; site.portfolio = site.portfolio || []; };
+async function loadSite() { try { const r = await fetch("data/site.json?v=" + Date.now()); if (r.ok) site = await r.json(); } catch {} fixSite(); notify(); }
+async function refreshFromApi() { const r = await gh("GET", "data/site.json"); if (!r.ok) return; const j = await r.json(); siteSha = j.sha; try { site = JSON.parse(unb64(j.content)); } catch {} fixSite(); notify(); }
+async function commit() {
+  const send = () => gh("PUT", "data/site.json", { message: "Update site content", content: b64(new TextEncoder().encode(JSON.stringify(site, null, 2))), sha: siteSha || undefined });
+  let r = await send();
+  if (r.status === 409 || r.status === 422) { const g = await gh("GET", "data/site.json"); if (g.ok) siteSha = (await g.json()).sha; r = await send(); }
+  if (!r.ok) throw new Error("GitHub error " + r.status);
+  siteSha = (await r.json()).content.sha;
+}
+async function mutate(fn) { if (!TOKEN) throw new Error("Unlock editing first."); const snap = JSON.stringify(site); fn(); notify(); try { await commit(); } catch (e) { site = JSON.parse(snap); notify(); throw e; } }
+const ghDb = {
+  doc(path) { const [col, id] = path.split("/"); return {
+    onSnapshot(cb) { const f = () => { const d = site.docs[id]; cb({ exists: !!d, data: () => d }); }; subs.push(f); f(); },
+    set: data => mutate(() => { site.docs[id] = data; }),
+    delete: () => mutate(() => { site.portfolio = site.portfolio.filter(x => x.id !== id); }) }; },
+  collection() { return { orderBy() { return this; },
+    onSnapshot(cb) { const f = () => cb({ docs: [...site.portfolio].sort((a, b) => b.created - a.created).map(x => ({ id: x.id, data: () => x })) }); subs.push(f); f(); },
+    add: d => mutate(() => { site.portfolio.unshift({ id: uid(), ...d }); }) }; }
+};
+const ghAssets = {
+  async upload(file) {
+    if (!TOKEN) throw new Error("Unlock editing first.");
+    const name = "uploads/" + Date.now() + "-" + file.name.replace(/[^\w.\-]+/g, "_");
+    const r = await gh("PUT", name, { message: "Upload " + name, content: b64(new Uint8Array(await file.arrayBuffer())) });
+    if (!r.ok) throw new Error("Upload failed (GitHub " + r.status + ")");
+    return { id: name, url: name, sizeBytes: file.size, contentType: file.type };
+  },
+  async delete(id) { const m = await gh("GET", id); if (!m.ok) return; await gh("DELETE", id, { message: "Delete " + id, sha: (await m.json()).sha }); }
+};
+const getStored = () => { try { return localStorage.getItem("gh_token"); } catch { return null; } };
+async function verify(tok) { try { const r = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}`, { headers: { Authorization: "Bearer " + tok, Accept: "application/vnd.github+json" } }); if (!r.ok) return false; const j = await r.json(); return !!(j.permissions && j.permissions.push); } catch { return false; } }
+async function unlockWith(tok, remember) {
+  if (!(await verify(tok))) return false;
+  TOKEN = tok; unlocked = true; if (remember) try { localStorage.setItem("gh_token", tok); } catch {}
+  await refreshFromApi(); render(); return true;
+}
+/* GH-SHIM-END */
+
+/* ===== 3. State ===== */
+let db = ghDb, assets = ghAssets, unlocked = false, tab = "intro", cat = "All", resume = null, items = [], busy = false;
+try { tab = localStorage.getItem("tab") || "intro"; } catch {}
+
+/* ===== editable sections (saved in db, editable only when unlocked) ===== */
+const DEF = {
+  skills: SITE.skills.map(([g, l]) => ({ g, l })),
+  courses: SITE.courses,
+  hobbies: SITE.hobbies.map(([i, n, d]) => ({ i, n, d })),
+  favs: [
+    { g: "Movies", l: ["Movie title 1", "Movie title 2", "Movie title 3"] },
+    { g: "TV Shows", l: ["Show title 1", "Show title 2"] },
+    { g: "Music", l: ["Artist 1", "Artist 2", "Artist 3"] },
+    { g: "Games", l: ["Game 1", "Game 2"] },
+    { g: "Books", l: ["Book 1", "Book 2"] },
+    { g: "Currently into", l: ["Whatever you’re obsessed with right now"] }
+  ]
+};
+const DATA = {};
+const get = k => DATA[k] || DEF[k];
+async function save(k, arr) { if (!db) return toast("Database unavailable."); try { await db.doc("site/" + k).set({ items: arr }); toast("Saved"); } catch { toast("Could not save. Is your token still valid?"); } }
+const edit = (k, fn) => { const a = structuredClone(get(k)); fn(a); save(k, a); };
+const delBtn = fn => h("button", { class: "x", title: "Delete", onclick: () => dialog("Delete this item?").then(ok => ok && fn()) }, "✕");
+function addForm(k, fields, make) {
+  const ins = fields.map(p => h("input", { placeholder: p }));
+  const b = h("button", { class: "btn pri" }, "Add");
+  b.onclick = () => { const v = ins.map(i => i.value.trim()); if (!v[0] || !v[1]) return toast("Fill in the first two fields."); edit(k, a => a.unshift(make(v))); };
+  return h("div", { class: "card admin" }, h("div", { class: "row" }, ins.map(i => h("div", { style: "flex:1;min-width:150px" }, i)), b));
+}
+let editingIntro = false;
+function introView() {
+  const text = DATA.intro && DATA.intro.text != null ? DATA.intro.text : SITE.intro, card = h("div", { class: "card" });
+  if (editingIntro && unlocked) {
+    const ta = h("textarea", { rows: 8 }); ta.value = text;
+    card.append(ta, h("div", { class: "row", style: "margin-top:10px" },
+      h("button", { class: "btn pri", onclick: async () => { try { await db.doc("site/intro").set({ text: ta.value.trim() }); editingIntro = false; toast("Saved"); } catch { toast("Could not save. Is your token still valid?"); } render(); } }, "Save"),
+      h("button", { class: "btn", onclick: () => { editingIntro = false; render(); } }, "Cancel"), h("span", { class: "meta" }, "A blank line starts a new paragraph")));
+  } else {
+    text.split(/\n\s*\n/).filter(x => x.trim()).forEach(t => card.append(h("p", {}, t)));
+    if (unlocked) card.append(h("button", { class: "btn", style: "font-size:12px;padding:4px 10px", onclick: () => { editingIntro = true; render(); } }, "✎ Edit text"));
+  }
+  return card;
+}
+async function editEmail() {
+  const v = await dialog("Email address shown on your site", { input: true, secret: false, value: (DATA.contact && DATA.contact.email) || SITE.email });
+  if (v == null) return;
+  try { await db.doc("site/contact").set({ email: v.trim() }); toast("Saved"); } catch { toast("Could not save. Is your token still valid?"); }
+}
+function photoBox() {
+  const ph = DATA.photo, wrap = h("div", { class: "photowrap" }, h("div", { class: "photo" }, ph && ph.url ? h("img", { src: ph.url, alt: "Photo" }) : h("span", {}, "👤")));
+  if (unlocked) {
+    const f = h("input", { type: "file", accept: "image/*", style: "display:none" });
+    const b = h("button", { class: "btn", style: "margin-top:8px;font-size:12px;padding:4px 10px" }, ph ? "Change photo" : "Upload photo");
+    b.onclick = () => f.click();
+    f.onchange = () => run(b, async () => {
+      const file = f.files[0]; if (!file) return; if (!file.type.startsWith("image/")) throw new Error("Please choose an image.");
+      const r = await upload(file); const old = ph && ph.assetId;
+      await db.doc("site/photo").set({ assetId: r.id, url: r.url }); await removeAsset(old); toast("Photo updated");
+    });
+    wrap.append(f, b);
+  }
+  return wrap;
+}
+function skillsView() { return groupsView("skills"); }
+function groupsView(key) {
+  const arr = get(key), box = h("div", {});
+  arr.forEach((grp, gi) => {
+    const tags = h("div", {}, grp.l.map((s, si) => h("span", { class: "tag" }, s, unlocked && h("button", { class: "x", title: "Remove", onclick: () => edit(key, a => a[gi].l.splice(si, 1)) }, "×"))));
+    if (unlocked) {
+      const inp = h("input", { class: "mini", placeholder: "+ add, Enter" });
+      inp.onkeydown = e => { if (e.key === "Enter" && inp.value.trim()) edit(key, a => a[gi].l.push(inp.value.trim())); };
+      tags.append(inp);
+    }
+    box.append(h("div", { class: "skillrow" }, h("b", { class: "mono" }, grp.g, unlocked && h("button", { class: "x", title: "Remove group", onclick: () => dialog("Remove group “" + grp.g + "”?").then(ok => ok && edit(key, a => a.splice(gi, 1))) }, "×")), tags));
+  });
+  if (unlocked) {
+    const inp = h("input", { class: "mini", placeholder: "+ new group, Enter" });
+    inp.onkeydown = e => { if (e.key === "Enter" && inp.value.trim()) edit(key, a => a.push({ g: inp.value.trim(), l: [] })); };
+    box.append(inp);
+  }
+  return box;
+}
+let courseSchool = "All";
+function courseForm(schools) {
+  const code = h("input", { placeholder: "e.g. CS 61A" }), name = h("input", { placeholder: "Course name" }), school = h("input", { placeholder: "School / university", list: "schools" }),
+    grade = h("input", { placeholder: "e.g. A, 3.7, Pass (optional)" }), desc = h("textarea", { rows: 3, placeholder: "What you learned / projects (optional)" });
+  const b = h("button", { class: "btn pri", style: "margin-top:14px" }, "Add course");
+  b.onclick = () => { if (!name.value.trim()) return toast("Please enter a course name."); edit("courses", a => a.unshift({ code: code.value.trim(), name: name.value.trim(), school: school.value.trim(), grade: grade.value.trim(), desc: desc.value.trim() })); };
+  return h("div", { class: "card admin" }, h("strong", {}, "🔓 Add a course"), h("label", {}, "Course code"), code, h("label", {}, "Course name"), name, h("label", {}, "School"), school,
+    h("datalist", { id: "schools" }, schools.map(x => h("option", { value: x }))), h("label", {}, "Grade"), grade, h("label", {}, "What I learned"), desc, b);
+}
+function courseView() {
+  const arr = get("courses"), schools = [...new Set(arr.map(c => c.school).filter(Boolean))];
+  if (courseSchool !== "All" && !schools.includes(courseSchool)) courseSchool = "All";
+  return h("div", {}, head("", "Coursework", null), h("div", { style: "margin-top:20px" }),
+    unlocked && courseForm(schools),
+    schools.length > 1 && h("div", { class: "chips" }, ["All", ...schools].map(c => h("button", { class: "chip" + (c === courseSchool ? " on" : ""), onclick: () => { courseSchool = c; render(); } }, c))),
+    h("div", { class: "grid" }, arr.map((c, i) => (courseSchool === "All" || c.school === courseSchool) && h("div", { class: "card", style: "display:flex;flex-direction:column;gap:6px" },
+      h("span", { class: "meta" }, [c.code, c.school].filter(Boolean).join(" · ")),
+      h("h3", { style: "margin:0;font-size:17px" }, c.name, unlocked && delBtn(() => edit("courses", a => a.splice(i, 1)))),
+      c.desc && h("p", { class: "meta", style: "font-size:14px;margin:0" }, c.desc),
+      c.grade && h("span", { class: "tag", style: "align-self:flex-start;margin:6px 0 0" }, "Grade: " + c.grade)))));
+}
+const editingText = {};
+function blurb(key, def) {
+  const text = DATA[key] && DATA[key].text != null ? DATA[key].text : def, card = h("div", { class: "card" });
+  if (editingText[key] && unlocked) {
+    const ta = h("textarea", { rows: 6 }); ta.value = text;
+    card.append(ta, h("div", { class: "row", style: "margin-top:10px" },
+      h("button", { class: "btn pri", onclick: async () => { try { await db.doc("site/" + key).set({ text: ta.value.trim() }); editingText[key] = false; toast("Saved"); } catch { toast("Could not save. Is your token still valid?"); } render(); } }, "Save"),
+      h("button", { class: "btn", onclick: () => { editingText[key] = false; render(); } }, "Cancel")));
+  } else {
+    text.split(/\n\s*\n/).filter(x => x.trim()).forEach(t => card.append(h("p", {}, t)));
+    if (unlocked) card.append(h("button", { class: "btn", style: "font-size:12px;padding:4px 10px", onclick: () => { editingText[key] = true; render(); } }, "✎ Edit text"));
+  }
+  return card;
+}
+function hobbyView() {
+  return h("div", {}, head("", "Interests", null), h("div", { style: "height:14px" }),
+    h("h2", { style: "margin-top:0" }, "Hobbies"), blurb("hobbytext", "Write a few lines about what you do for fun and what you’re into lately."),
+    h("h2", {}, "Favorites"), groupsView("favs"),
+    h("div", { class: "row", style: "margin-top:28px" }, h("a", { class: "btn", href: "https://myanimelist.net/profile/yumi-z", target: "_blank", rel: "noopener" }, "My Anime List ↗")));
+}
+
+/* in-page dialog (replaces prompt/confirm, which sandboxed pages may block) */
+function dialog(msg, { input = false, secret = true, value = "", remember = false } = {}) {
+  return new Promise(res => {
+    const d = $("#dlg"), i = $("#din"); $("#dmsg").textContent = msg; i.style.display = input ? "" : "none"; i.value = value; i.type = secret ? "password" : "text"; $("#drow").style.display = remember ? "" : "none"; $("#dchk").checked = false;
+    const done = v => { d.classList.remove("on"); $("#dyes").onclick = $("#dno").onclick = i.onkeydown = null; res(v); };
+    $("#dyes").onclick = () => done(input ? i.value : true);
+    $("#dno").onclick = () => done(input ? null : false);
+    i.onkeydown = e => { if (e.key === "Enter") $("#dyes").click(); };
+    d.classList.add("on"); if (input) i.focus();
+  });
+}
+
+/* ===== 4. Password gate ===== */
+async function toggleLock() {
+  if (unlocked) { unlocked = false; TOKEN = null; try { localStorage.removeItem("gh_token"); } catch {} render(); return toast("Locked"); }
+  const t = await dialog("Paste your GitHub token to enable editing", { input: true, remember: true });
+  if (!t || !t.trim()) return;
+  toast("Checking token…");
+  if (!(await unlockWith(t.trim(), $("#dchk").checked))) return toast("That token doesn’t work for this repository.");
+  toast("Unlocked");
+}
+
+/* ===== 5. Upload logic ===== */
+async function upload(file) {
+  if (!assets) throw new Error("File storage is only available to the page owner.");
+  if (file.size > 20 * 1024 * 1024) throw new Error("File is over 20 MB.");
+  return assets.upload(file);
+}
+async function removeAsset(id) { try { if (id && assets) await assets.delete(id); } catch {} }
+async function run(btn, fn) {
+  if (busy) return; busy = true; const old = btn.textContent; btn.textContent = "Uploading…"; btn.disabled = true;
+  try { await fn(); } catch (e) { toast(e.message || "Something went wrong"); }
+  busy = false; btn.textContent = old; btn.disabled = false;
+}
+
+/* ===== 6. Views ===== */
+const views = {
+  intro: () => h("div", {},
+    h("div", { class: "hero" }, head("About", "", null, "tw"), photoBox()),
+    introView(),
+    h("div", { style: "margin-top:26px" }, skillsView()),
+    h("div", { style: "margin-top:26px" }, h("p", { style: "margin:0 0 12px" }, h("span", { class: "mono", style: "color:var(--mute)" }, "Email  "), (DATA.contact && DATA.contact.email) || SITE.email, unlocked && h("button", { class: "x", style: "margin-left:10px", onclick: editEmail }, "✎ edit")),
+      h("div", { class: "row" }, SITE.links.map(([n, u]) => h("a", { class: "btn", href: u, target: "_blank", rel: "noopener" }, n))))),
+
+  course: courseView,
+  hobby: hobbyView,
+
+  resume() {
+    const box = h("div", {}, head("", "Resume", null), h("div", { style: "height:14px" }));
+    if (unlocked) {
+      const f = h("input", { type: "file", accept: ".pdf,.doc,.docx,application/pdf" });
+      const b = h("button", { class: "btn pri", style: "margin-top:12px" }, "Upload & replace");
+      b.onclick = () => run(b, async () => {
+        const file = f.files[0]; if (!file) throw new Error("Choose a file first.");
+        const r = await upload(file); const oldId = resume?.assetId;
+        await db.doc("site/resume").set({ assetId: r.id, url: r.url, name: file.name, type: file.type, updated: Date.now() });
+        await removeAsset(oldId); toast("Resume updated");
+      });
+      box.append(h("div", { class: "card admin" }, h("strong", {}, "🔓 Replace resume"), h("label", {}, "PDF recommended. The old file is replaced."), f, b));
+    }
+    if (!resume) { box.append(h("div", { class: "empty" }, "No resume uploaded yet.")); return box; }
+    box.append(h("div", { class: "row" }, h("a", { class: "btn pri", href: resume.url, download: resume.name }, "Download"), h("span", { class: "meta" }, resume.name + " · updated " + fmt(resume.updated))));
+    if (resume.type === "application/pdf") { const pg = h("div", { class: "pages" }); box.append(pg); pdfPages(pg, resume.url, 20, 900); }
+    return box;
+  },
+
+  portfolio() {
+    const box = h("div", {}, head("", "Portfolio", null), h("div", { style: "height:14px" }));
+    if (unlocked) box.append(uploadForm());
+    box.append(h("div", { class: "chips" }, ["All", ...SITE.categories].map(c =>
+      h("button", { class: "chip" + (c === cat ? " on" : ""), onclick: () => { cat = c; render(); } }, c))));
+    const list = items.filter(i => cat === "All" || i.cat === cat);
+    box.append(list.length ? h("div", { class: "grid" }, list.map(card)) : h("div", { class: "empty" }, "Nothing here yet."));
+    return box;
+  }
+};
+
+/* PDF rendering with pdf.js (works without browser PDF plugin) */
+let pdfLib = null;
+function loadPdf() {
+  return pdfLib || (pdfLib = new Promise((res, rej) => {
+    const sc = h("script", { src: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" });
+    sc.onload = () => { pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"; res(pdfjsLib); };
+    sc.onerror = () => { pdfLib = null; rej(new Error("pdf.js failed to load")); };
+    document.head.append(sc);
+  }));
+}
+async function openPdf(url) { return (await loadPdf()).getDocument(url).promise; }
+async function drawPage(doc, n, cv, w) {
+  const pg = await doc.getPage(n), v0 = pg.getViewport({ scale: 1 }), vp = pg.getViewport({ scale: (w / v0.width) * (devicePixelRatio || 1) });
+  cv.width = vp.width; cv.height = vp.height; cv.style.width = "100%";
+  await pg.render({ canvasContext: cv.getContext("2d"), viewport: vp }).promise;
+}
+async function thumb(cv, url) { await drawPage(await openPdf(url), 1, cv, 420); }
+async function pdfPages(box, url, max, w) {
+  try { const d = await openPdf(url); for (let n = 1; n <= Math.min(d.numPages, max); n++) { const cv = h("canvas", {}); box.append(cv); await drawPage(d, n, cv, w); } }
+  catch { box.replaceChildren(h("div", { class: "empty" }, "Preview unavailable.")); }
+}
+function viewPdf(url) { const b = $("#vbody"); b.replaceChildren(); $("#viewer").classList.add("on"); pdfPages(b, url, 40, 900); }
+
+function uploadForm() {
+  const title = h("input", { placeholder: "Title" }), desc = h("textarea", { rows: 2, placeholder: "Short description (optional)" });
+  const sel = h("select", {}, SITE.categories.map(c => h("option", {}, c)));
+  const file = h("input", { type: "file", accept: "image/*,video/*,.pdf" }), url = h("input", { placeholder: "https://…" });
+  const fw = h("div", {}, h("label", {}, "File (image / video / PDF, max 20 MB)"), file), uw = h("div", { style: "display:none" }, h("label", {}, "Link URL"), url);
+  const mode = h("select", { onchange: () => { fw.style.display = mode.value === "file" ? "" : "none"; uw.style.display = mode.value === "url" ? "" : "none"; } },
+    h("option", { value: "file" }, "Upload a file"), h("option", { value: "url" }, "Add a link"));
+  const b = h("button", { class: "btn pri", style: "margin-top:14px" }, "Add to portfolio");
+  b.onclick = () => run(b, async () => {
+    if (!title.value.trim()) throw new Error("Please enter a title.");
+    const doc = { title: title.value.trim(), cat: sel.value, desc: desc.value.trim(), created: Date.now() };
+    if (mode.value === "url") { const u = safeUrl(url.value.trim()); if (!u) throw new Error("Enter a valid http(s) URL."); Object.assign(doc, { kind: "link", url: u }); }
+    else { const fl = file.files[0]; if (!fl) throw new Error("Choose a file."); const r = await upload(fl); Object.assign(doc, { kind: kindOf(fl), url: r.url, assetId: r.id, fileName: fl.name }); }
+    await db.collection("portfolio").add(doc); toast("Added: " + doc.title);
+  });
+  return h("div", { class: "card admin" }, h("strong", {}, "🔓 Add new work"),
+    h("label", {}, "Title"), title, h("label", {}, "Category"), sel, h("label", {}, "Description"), desc, h("label", {}, "Type"), mode, fw, uw, b);
+}
+
+function card(i) {
+  const m = h("div", { class: "media" });
+  if (i.kind === "image") m.append(h("img", { src: i.url, alt: i.title, loading: "lazy" }));
+  else if (i.kind === "video") m.append(h("video", { src: i.url, controls: "", preload: "metadata" }));
+  else if (i.kind === "pdf") { const cv = h("canvas", {}); m.append(cv); m.style.cssText = "align-items:flex-start;cursor:pointer"; m.title = "Click to view"; m.onclick = () => viewPdf(i.url); thumb(cv, i.url).catch(() => m.replaceChildren("📄")); }
+  else m.textContent = i.kind === "link" ? "🔗" : "📎";
+  const acts = h("div", { class: "row", style: "margin-top:auto;padding-top:8px" });
+  if (i.kind === "pdf") acts.append(h("button", { class: "btn", onclick: () => viewPdf(i.url) }, "View"));
+  else if (i.kind !== "video") acts.append(h("a", { class: "btn", href: i.url, target: "_blank", rel: "noopener" }, i.kind === "link" ? "Visit ↗" : "Open"));
+  if (unlocked) acts.append(h("button", { class: "btn del", onclick: async () => {
+    if (!await dialog("Delete “" + i.title + "”?")) return;
+    try { await db.doc("portfolio/" + i.id).delete(); await removeAsset(i.assetId); toast("Deleted"); } catch { toast("Delete failed"); } } }, "Delete"));
+  return h("div", { class: "card item" }, m, h("div", { class: "body" }, h("span", { class: "tag", style: "align-self:flex-start;margin:0" }, i.cat),
+    h("h3", {}, i.title), i.desc && h("p", {}, i.desc), h("span", { class: "meta" }, fmt(i.created)), acts));
+}
+
+/* ===== 7. Render & boot ===== */
+function go(k) { tab = k; try { localStorage.setItem("tab", k); } catch {} render(); scrollTo(0, 0); }
+function render() {
+  $("#brand").textContent = "~/" + SITE.handle;
+  $("#lock").textContent = unlocked ? "🔓 Lock" : "🔒 Edit";
+  $("#nav").replaceChildren(...TABS.map(([k, n], i) => h("button", { class: k === tab ? "on" : "", onclick: () => go(k) }, h("span", { class: "k" }, i + 1), n)));
+  if (!views[tab]) tab = "intro";
+  $("#view").replaceChildren(views[tab]());
+  $("#foot").replaceChildren(h("span", {}, "Built with HTML · CSS · JS, hosted on GitHub Pages"), h("span", {}, h("kbd", {}, "1–5"), " switch  ", h("kbd", {}, "/"), " search"), h("span", {}, "Last updated " + SITE.updated));
+  typewrite();
+}
+$("#lock").onclick = toggleLock;
+
+/* theme toggle */
+const root = document.documentElement;
+function setTheme(t) { root.dataset.theme = t; $("#theme").textContent = t === "dark" ? "☀" : "☾"; try { localStorage.setItem("theme", t); } catch {} }
+let th; try { th = localStorage.getItem("theme"); } catch {}
+setTheme(th || (matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light"));
+$("#theme").onclick = () => setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+
+/* command palette + keyboard shortcuts */
+const pal = $("#pal"), pin = $("#pin"), plist = $("#plist"); let psel = 0, pm = [];
+function palList() { const q = pin.value.toLowerCase(); pm = TABS.filter(([k, n]) => (k + n).toLowerCase().includes(q)); psel = 0;
+  plist.replaceChildren(...pm.map(([k, n], i) => h("div", { class: "opt" + (i === 0 ? " sel" : ""), onclick: () => { palClose(); go(k); } }, n, h("span", { class: "meta" }, "~/" + k)))); }
+function palOpen() { pal.classList.add("on"); pin.value = ""; palList(); pin.focus(); }
+function palClose() { pal.classList.remove("on"); pin.blur(); }
+pin.oninput = palList;
+pin.onkeydown = e => { if (e.key === "Enter" && pm[psel]) { palClose(); go(pm[psel][0]); } };
+pal.onclick = e => { if (e.target === pal) palClose(); };
+const vw = $("#viewer"), vclose = () => vw.classList.remove("on"); $("#vclose").onclick = vclose; vw.onclick = e => { if (e.target === vw || e.target.id === "vbody") vclose(); };
+addEventListener("keydown", e => {
+  if (e.key === "Escape") { $("#dno").click(); vclose(); return palClose(); }
+  if (/INPUT|TEXTAREA|SELECT/.test(e.target.tagName) || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key === "/") { e.preventDefault(); return palOpen(); }
+  const i = +e.key - 1; if (i >= 0 && i < TABS.length) go(TABS[i][0]);
+});
+
+render();
+
+(async () => {
+  await loadSite();
+  for (const k of ["skills", "courses", "hobbies", "favs"]) db.doc("site/" + k).onSnapshot(s => { if (s.exists) DATA[k] = s.data().items; render(); });
+  db.doc("site/photo").onSnapshot(s => { DATA.photo = s.exists ? s.data() : null; render(); });
+  db.doc("site/intro").onSnapshot(s => { DATA.intro = s.exists ? s.data() : null; render(); });
+  db.doc("site/contact").onSnapshot(s => { DATA.contact = s.exists ? s.data() : null; render(); });
+  db.doc("site/hobbytext").onSnapshot(s => { DATA.hobbytext = s.exists ? s.data() : null; render(); });
+  db.doc("site/resume").onSnapshot(s => { resume = s.exists ? s.data() : null; render(); });
+  db.collection("portfolio").orderBy("created", "desc").onSnapshot(q => { items = q.docs.map(d => ({ id: d.id, ...d.data() })); render(); });
+  const st = getStored(); if (st) unlockWith(st, false).then(ok => { if (!ok) try { localStorage.removeItem("gh_token"); } catch {} });
+})();
+</script>
+</body>
+</html>
