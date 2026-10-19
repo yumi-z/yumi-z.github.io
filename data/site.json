@@ -33,6 +33,13 @@
     "photo": {
       "assetId": "uploads/1792377464382-_.jpg",
       "url": "uploads/1792377464382-_.jpg"
+    },
+    "resume": {
+      "assetId": "uploads/1792377762645-2026_10_16Technical_Resume_.pdf",
+      "url": "uploads/1792377762645-2026_10_16Technical_Resume_.pdf",
+      "name": "2026_10_16Technical Resume .pdf",
+      "type": "application/pdf",
+      "updated": 1792377763966
     }
   },
   "portfolio": []
