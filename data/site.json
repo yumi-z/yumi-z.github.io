@@ -27,7 +27,8 @@
         {
           "g": "Hardware, Embedded Systems & Prototyping",
           "l": [
-            "Arduino / Seeeduino / ATTiny"
+            "Arduino / Seeeduino / ATTiny",
+            "Sensor Integration & DAQ"
           ]
         }
       ]
