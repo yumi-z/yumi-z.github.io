@@ -55,6 +55,13 @@
     "courses": {
       "items": [
         {
+          "code": "ELENG64",
+          "name": "Introduction to Circuits & Devices",
+          "school": "University of California, Berkeley",
+          "grade": "A+",
+          "desc": ""
+        },
+        {
           "code": "CS61B",
           "name": "Data Structures",
           "school": "University of California, Berkeley",
