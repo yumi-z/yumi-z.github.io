@@ -15,7 +15,9 @@
         },
         {
           "g": "Tools",
-          "l": []
+          "l": [
+            "git/github"
+          ]
         },
         {
           "g": "Focus",
