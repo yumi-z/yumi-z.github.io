@@ -55,6 +55,13 @@
     "courses": {
       "items": [
         {
+          "code": "EE 120",
+          "name": "Signals and Systems",
+          "school": "University of California, Berkeley",
+          "grade": "In Progress",
+          "desc": ""
+        },
+        {
           "code": "ELENG66",
           "name": "Introduction to Signals, Dynamics, and Information",
           "school": "University of California, Berkeley",
