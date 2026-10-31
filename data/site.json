@@ -55,6 +55,13 @@
     "courses": {
       "items": [
         {
+          "code": "CS61B",
+          "name": "Data Structures",
+          "school": "University of California, Berkeley",
+          "grade": "A",
+          "desc": ""
+        },
+        {
           "code": "CS61A",
           "name": "Structure and Interpretation of Computer Programs",
           "school": "University of California, Berkeley",
