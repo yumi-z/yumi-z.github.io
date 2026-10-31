@@ -14,7 +14,9 @@
         },
         {
           "g": "Tools, Frameworks & Software",
-          "l": []
+          "l": [
+            "MATLAB / Simulink / MATLAB App Designer"
+          ]
         }
       ]
     },
