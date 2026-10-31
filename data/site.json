@@ -55,6 +55,13 @@
     "courses": {
       "items": [
         {
+          "code": "EE C106A",
+          "name": "Introduction to Robotics",
+          "school": "University of California, Berkeley",
+          "grade": "In Progress",
+          "desc": ""
+        },
+        {
           "code": "EE 120",
           "name": "Signals and Systems",
           "school": "University of California, Berkeley",
