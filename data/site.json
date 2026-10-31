@@ -40,6 +40,9 @@
       "name": "2026_10_16Technical Resume .pdf",
       "type": "application/pdf",
       "updated": 1792377763966
+    },
+    "intro": {
+      "text": "Hi, I'm Yumi Zhao.\n\nI am a senior studying Bioengineering with a minor in EECS at UC Berkeley.\n\nMy work is rooted in hands-on hardware engineering and physical system integration. I specialize in building and testing tangible prototypes—ranging from designing mechanical mechanisms and integrating custom circuits for bio-inspired robots to enable targeted motion, to developing micro-controller firmware and real-time data acquisition platforms. I enjoy bridging the gap between mechanical hardware, electronics, and software.\n\nWelcome to my portfolio—feel free to explore my projects below."
     }
   },
   "portfolio": []
