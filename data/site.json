@@ -26,7 +26,9 @@
         },
         {
           "g": "Hardware, Embedded Systems & Prototyping",
-          "l": []
+          "l": [
+            "Arduino / Seeeduino / ATTiny"
+          ]
         }
       ]
     },
