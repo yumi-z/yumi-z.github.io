@@ -16,7 +16,8 @@
           "g": "Tools, Frameworks & Software",
           "l": [
             "MATLAB / Simulink / MATLAB App Designer",
-            "PyQt"
+            "PyQt",
+            "Arduino IDE"
           ]
         }
       ]
