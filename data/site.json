@@ -28,7 +28,8 @@
           "g": "Hardware, Embedded Systems & Prototyping",
           "l": [
             "Arduino / Seeeduino / ATTiny",
-            "Sensor Integration & DAQ"
+            "Sensor Integration & DAQ",
+            "3D Parametric CAD"
           ]
         }
       ]
