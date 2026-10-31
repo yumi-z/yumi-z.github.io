@@ -60,13 +60,6 @@
           "school": "University of California, Berkeley",
           "grade": "A",
           "desc": ""
-        },
-        {
-          "code": "COURSE 101",
-          "name": "Course name",
-          "school": "Your University",
-          "grade": "A",
-          "desc": "One or two lines on what you learned or built."
         }
       ]
     }
