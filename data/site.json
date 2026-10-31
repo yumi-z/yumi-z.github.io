@@ -55,6 +55,13 @@
     "courses": {
       "items": [
         {
+          "code": "ELENG66",
+          "name": "Introduction to Signals, Dynamics, and Information",
+          "school": "University of California, Berkeley",
+          "grade": "A",
+          "desc": ""
+        },
+        {
           "code": "ELENG64",
           "name": "Introduction to Circuits & Devices",
           "school": "University of California, Berkeley",
