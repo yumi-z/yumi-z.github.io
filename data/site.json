@@ -100,6 +100,52 @@
     },
     "hobbytext": {
       "text": ":P"
+    },
+    "favs": {
+      "items": [
+        {
+          "g": "Movies",
+          "l": [
+            "Movie title 2",
+            "Movie title 3"
+          ]
+        },
+        {
+          "g": "TV Shows",
+          "l": [
+            "Show title 1",
+            "Show title 2"
+          ]
+        },
+        {
+          "g": "Music",
+          "l": [
+            "Artist 1",
+            "Artist 2",
+            "Artist 3"
+          ]
+        },
+        {
+          "g": "Games",
+          "l": [
+            "Game 1",
+            "Game 2"
+          ]
+        },
+        {
+          "g": "Books",
+          "l": [
+            "Book 1",
+            "Book 2"
+          ]
+        },
+        {
+          "g": "Currently into",
+          "l": [
+            "Whatever you’re obsessed with right now"
+          ]
+        }
+      ]
     }
   },
   "portfolio": []
